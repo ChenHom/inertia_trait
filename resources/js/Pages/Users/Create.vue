@@ -16,8 +16,12 @@
         class="border border-gray-400 p2 w-full"
         name="name"
         id="name"
-        required
       />
+      <div
+        v-if="errors.name"
+        v-text="errors.name"
+        class="text-red-500 text-xs mt-1"
+      ></div>
     </div>
     <div class="mb-6">
       <label
@@ -31,8 +35,12 @@
         class="border border-gray-400 p2 w-full"
         name="email"
         id="email"
-        required
       />
+      <div
+        v-if="errors.name"
+        v-text="errors.name"
+        class="text-red-500 text-xs mt-1"
+      ></div>
     </div>
     <div class="mb-6">
       <label
@@ -46,8 +54,12 @@
         class="border border-gray-400 p2 w-full"
         name="password"
         id="password"
-        required
       />
+      <div
+        v-if="errors.name"
+        v-text="errors.name"
+        class="text-red-500 text-xs mt-1"
+      ></div>
     </div>
     <div class="mb-6">
       <button
@@ -63,6 +75,10 @@
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
 import { reactive } from "vue";
+
+defineProps({
+  errors: Object,
+});
 
 let form = reactive({
   name: "",
