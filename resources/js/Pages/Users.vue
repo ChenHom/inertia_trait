@@ -55,18 +55,19 @@
 </template>
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
-import { ref, watch } from "@vue/reactivity";
+import { ref, watch } from "vue";
 import Pagination from "../Shared/Pagination.vue";
 
-defineProps({ users: Object });
+let props = defineProps({ users: Object, filters: Object });
 
-let search = ref("");
+let search = ref(props.filters.search);
 watch(search, (value) => {
   Inertia.get(
     "/users",
     { search: value },
     {
       preserveState: true,
+      replace: true,
     }
   );
 });

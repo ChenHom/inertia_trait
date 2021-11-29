@@ -12,32 +12,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
-/* harmony import */ var _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Shared/Pagination.vue */ "./resources/js/Shared/Pagination.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Shared/Pagination.vue */ "./resources/js/Shared/Pagination.vue");
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    users: Object
+    users: Object,
+    filters: Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
-    var search = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref)("");
-    (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.watch)(search, function (value) {
+    var props = __props;
+    var search = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(props.filters.search);
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(search, function (value) {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.get("/users", {
         search: value
       }, {
-        preserveState: true
+        preserveState: true,
+        replace: true
       });
     });
     var __returned__ = {
+      props: props,
       search: search,
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
-      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref,
-      watch: _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.watch,
-      Pagination: _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+      ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_1__.watch,
+      Pagination: _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
