@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,11 @@ Route::get('/', function () {
     return inertia('Home');
 });
 Route::get('/users', function () {
-    sleep(2);
-    return inertia('Users');
+    return inertia('Users', [
+        'users' => User::query()
+            ->when(request('search'))
+            ->paginate(10, ['name', 'id'])
+    ]);
 });
 Route::get('/settings', function () {
     return inertia('Settings');
